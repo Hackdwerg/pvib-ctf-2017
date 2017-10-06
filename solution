@@ -2,7 +2,7 @@
 
 REQ1=$(curl -s http://{IP}/ | grep center | cut -f 7 -d '"' | sed 's/>//' | tr -d '</p>' | sed "s/ //g" )
 REQ2_md5=$(echo -n $REQ1 | md5sum | sed 's/-//'  | sed "s/ //g")
-REQ2=$(curl -s -X POST 'http://{IP}/submit' -H 'Cookie: PHPSESSID=d5uuj6920e5kaoraqmomojp761;' --data "data=$REQ2_md5" --proxy "http://127.0.0.1:8080")
+REQ2=$(curl -s -X POST 'http://{IP}/submit' --data "data=$REQ2_md5" --proxy "http://127.0.0.1:8080")
 echo $REQ1
 echo $REQ2_md5
 echo $REQ2
